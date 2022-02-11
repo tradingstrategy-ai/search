@@ -40,3 +40,9 @@ docker-compose up -d
 ```bash
 docker-compose down
 ```
+## Collection Details
+
+The search index includes multipe collections, including:
+* [Trading Entities](docs/trading-entities.md)
+* Documentation Pages *(coming soon)*
+* Blog Posts *(coming soon)*
