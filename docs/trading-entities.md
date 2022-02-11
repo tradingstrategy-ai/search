@@ -64,7 +64,7 @@ Collection import files should be in [JSON Lines](https://jsonlines.org) format 
   "name": "Aave (AAVE)",
   "description": "Aave (AAVE) token on Ethereum",
   "blockchain": "Ethereum",
-  "smart_contract_addresses": ["0xd75ea151a61d06868e31f8988d28dfe5e9df57b4", "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"],
+  "smart_contract_addresses": ["0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"],
   "token_tickers": ["AAVE"],
   "token_names": ["Aave"],
   "price_change_24h": 0.0123,
