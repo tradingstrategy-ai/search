@@ -16,7 +16,7 @@ See [Typesense field types](https://typesense.org/docs/0.22.2/api/collections.ht
 | `type` | `string` | &#x2713; | &#x2713; | &#x2717; | `exchange` \| `token` \| `pair`<br>for faceting and possibly grouping results |
 | `type_rank` | `int32` | &#x2713; | &#x2717; | &#x2717; | `exchange=1` \| `token=2` \| `pair=3`<br>for ranking; may not need this (depends how we rank and group results)|
 | `name` | `string` | &#x2713; | &#x2717; | &#x2713; | `exchange:` "QuickSwap" \| `token:` "Aave (AAVE)" \| `pair:` "AAVE-ETH" |
-| `description` | `string` | &#x2713; | &#x2717; | &#x2717; | `exchange:` "QuickSwap on Polygon" \| `token:` "Aave (AAVE) token on Ethereum" \| `pair:` "AAVE-ETH trading pair on SushiSwap on Ethereum" |
+| `description` | `string` | &#x2717; | &#x2717; | &#x2717; | `exchange:` "QuickSwap on Polygon" \| `token:` "Aave (AAVE) token on Ethereum" \| `pair:` "AAVE-ETH trading pair on SushiSwap on Ethereum" |
 | `blockchain` | `string` | &#x2713; | &#x2717; | &#x2713; | e.g., "Polygon", "Ethereum" |
 | `smart_contract_addresses` | `string[]` | &#x2713; | &#x2717; | &#x2713; | array of all indexable addresses for the type |
 | `token_tickers` | `string[]` | &#x2717; | &#x2717; | &#x2713; | array of all indexable token tickers for the type |
@@ -25,7 +25,7 @@ See [Typesense field types](https://typesense.org/docs/0.22.2/api/collections.ht
 | `volume_24h` | `float` | &#x2717; | &#x2717; | &#x2717; | in USD; advanced search filtering / ranking |
 | `liquidity` | `float` | &#x2717; | &#x2717; | &#x2717; | in USD; advanced search filtering / ranking |
 | `icon_url` | `string` | &#x2717; | &#x2717; | &#x2717; | future use |
-| `url_path` | `string` | &#x2713; | &#x2717; | &#x2717; | path of entity on tradingstrategy.ai (not including URL base) |
+| `url_path` | `string` | &#x2717; | &#x2717; | &#x2717; | path of entity on tradingstrategy.ai (not including URL base) |
 
 ## File Format
 
