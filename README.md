@@ -17,7 +17,7 @@ TBD - additional info on how data from each of these sources is added to the sea
 Set the `TYPESENSE_API_KEY` key. This is the master API key with full privileges – keep it secure!
 
 ```bash
-export TYPESENSE_API_KEY=super_secret_ts_key
+export TYPESENSE_API_KEY=super_secret_ts_key  # replace with a secure key
 ```
 
 ### Typesense Data Files
@@ -40,6 +40,12 @@ docker-compose up -d
 ```bash
 docker-compose down
 ```
+
+### Initial Typesense setup
+
+Once the docker-based Typesense service is running, you should continue to the
+**[Initial Setup](docs/initial-setup.md)** guide.
+
 ## Collection Details
 
 The search index includes multipe collections, including:
