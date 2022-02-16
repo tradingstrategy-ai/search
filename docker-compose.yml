@@ -6,6 +6,6 @@ services:
     image: typesense/typesense:0.22.2
     command: --data-dir /data --api-key=${TYPESENSE_API_KEY?err}
     ports:
-     - "8108:8108"
+      - "8108:8108"
     volumes:
       - ${TYPESENSE_DATA:-./typesense-data}:/data
