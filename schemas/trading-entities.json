@@ -10,9 +10,10 @@
     { "name": "smart_contract_addresses", "type": "string[]" },
     { "name": "token_tickers", "type": "string[]", "optional": true },
     { "name": "token_names", "type": "string[]", "optional": true },
-    { "name": "price_change_24h", "type": "float", "optional": true },
     { "name": "volume_24h", "type": "float", "optional": true },
     { "name": "liquidity", "type": "float", "optional": true },
+    { "name": "price_change_24h", "type": "float", "optional": true },
+    { "name": "price_usd_latest", "type": "float", "optional": true },
     { "name": "icon_url", "type": "string", "optional": true, "index": false },
     { "name": "url_path", "type": "string", "optional": true, "index": false }
   ]

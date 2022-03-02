@@ -22,9 +22,10 @@ See [Typesense field types](https://typesense.org/docs/0.22.2/api/collections.ht
 | `smart_contract_addresses` | `string[]` | &#x2713; | &#x2717; | &#x2713; | array of all indexable addresses for the type |
 | `token_tickers` | `string[]` | &#x2717; | &#x2717; | &#x2713; | array of all indexable token tickers for the type |
 | `token_names` | `string[]` | &#x2717; | &#x2717; | &#x2713; | array of all indexable token names for the type |
-| `price_change_24h` | `float` | &#x2717; | &#x2717; | &#x2717; | percent (expresed as decimal); secondary sort criterion for tokens & pairs |
 | `volume_24h` | `float` | &#x2717; | &#x2717; | &#x2717; | in USD; advanced search filtering / ranking |
 | `liquidity` | `float` | &#x2717; | &#x2717; | &#x2717; | in USD; advanced search filtering / ranking |
+| `price_change_24h` | `float` | &#x2717; | &#x2717; | &#x2717; | percent (expresed as decimal); secondary sort criterion for tokens & pairs |
+| `price_usd_latest` | `float` | &#x2717; | &#x2717; | &#x2717; | in USD; not valuable for filtering / ranking - used for display only |
 | `icon_url` | `string` | &#x2717; | &#x2717; | &#x2717; | future use |
 | `url_path` | `string` | &#x2717; | &#x2717; | &#x2717; | path of entity on tradingstrategy.ai (not including URL base) |
 
