@@ -4,7 +4,7 @@
     { "name": "type", "type": "string", "facet": true },
     { "name": "type_rank", "type": "int32" },
     { "name": "name", "type": "string" },
-    { "name": "description", "type": "string", "optional": true, "index": false },
+    { "name": "description", "type": "string" },
     { "name": "blockchain", "type": "string", "facet": true },
     { "name": "exchange", "type": "string", "facet": true },
     { "name": "smart_contract_addresses", "type": "string[]" },
