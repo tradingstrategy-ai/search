@@ -13,7 +13,7 @@ The `TYPESENSE_API_KEY` should be the same Admin API key used when starting the 
 
 ```bash
 export TYPESENSE_API_KEY=super_secret_ts_key                 # replace with a secure key
-export TYPESENSE_BASE_URL=https://tradingstrategy.ai/search  # replace with public search URL
+export TYPESENSE_BASE_URL=https://your.public.typesense.url  # replace with public search URL
 ```
 
 ## 2. Configure `trading-entities` collection
