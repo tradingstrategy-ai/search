@@ -1,14 +1,12 @@
 # Trading Strategy Search
 
-[tradingstrategy.ai](https://tradingstrategy.ai) uses [Typesense](https://typesense.org) to index
-trading entity data, documentation and blog posts. Typesense can be
-[self-hosted](https://typesense.org/docs/) or run as a
+[tradingstrategy.ai](https://tradingstrategy.ai) uses [Typesense](https://typesense.org) as a
+search index for trading entity data. We plan to add search index collections for documentation
+and blog posts. Typesense can be [self-hosted](https://typesense.org/docs/) or run as a
 [fully managed service](https://cloud.typesense.org).
 
 This repo provides Docker configuration, utility scripts and documentation on how to run Typesense
 self-hosted.
-
-TBD - additional info on how data from each of these sources is added to the search index.
 
 ## Running
 
@@ -41,14 +39,11 @@ docker-compose up -d
 docker-compose down
 ```
 
-### Initial Typesense setup
+## Additional Info
 
-Once the docker-based Typesense service is running, you should continue to the
-**[Initial Setup](docs/initial-setup.md)** guide.
-
-## Collection Details
-
-The search index includes multipe collections, including:
-* [Trading Entities](docs/trading-entities.md)
-* Documentation Pages *(coming soon)*
-* Blog Posts *(coming soon)*
+* [Initial Setup](docs/initial-setup.md) guide – explains how to create the `trading-entities`
+  colllection and provision additional API keys for import and search.
+* [Trading Entities](docs/trading-entities.md) – detailed schema documentation for the
+  `trading-entities` collection.
+* [Troubleshooting](docs/troubleshooting.md) guide – how to check the Typesense index status,
+  run test queries, or delete and re-populate the index.

@@ -28,11 +28,15 @@ curl -X POST "${TYPESENSE_BASE_URL}/collections" \
 
 You should receive a `JSON` response body that relfects the same collection and schema.
 
-## 3. Generate private API key for `trading-entities` import
+## 3. Generate scoped API keys for `trading-entities` collection
+
+The main `TYPESENSE_API_KEY` has full permissions. As a security practice, it's preferable to
+run most operations with a scoped key that has limited, appropriate privilages.
+
+### 3.a Private API key for `trading-entities` import
 
 The Trading Entities collection will be populated from a script that runs on the `dex_ohlcv`
-"oracle" server. The request below generates an API key that can be used by the import process (with
-reduced privileges compared to the Admin API key):
+"oracle" server. The request below generates an API key that can be used by the import process:
 
 ```bash
 curl -X POST "${TYPESENSE_BASE_URL}/keys" \
@@ -42,6 +46,21 @@ curl -X POST "${TYPESENSE_BASE_URL}/keys" \
 
 The `JSON` response body should include a `value` key. Stash this somewhere secure so it can be used
 when configuring the `dex_ohlcv` import process.
+
+### 3.b. Public `search` API key
+
+Similar to above, a custom API key is required for searches. This key is _public_ – it will be used
+for submitting search requests directly from the browser:
+
+```bash
+curl -X POST "${TYPESENSE_BASE_URL}/keys" \
+     -H "X-TYPESENSE-API-KEY: ${TYPESENSE_API_KEY}" \
+     -d '{"description":"Public search key","actions":["documents:search"],"collections":["*"]}'
+```
+
+Note the `value` from the `JSON` response body. Stash this somewhere so it can be used when
+configuring the [tradingstrategy-ai/frontend](https://github.com/tradingstrategy-ai/frontend)
+application.
 
 ## 4. Initial `trading-entities` import
 
@@ -66,17 +85,7 @@ curl "${TYPESENSE_BASE_URL}/collections/trading-entities" \
      -H "X-TYPESENSE-API-KEY: ${TYPESENSE_ORACLE_API_KEY}"
 ```
 
-## 5. Generate public `search` API key
-
-Similar to step #3 above, a custom API key (with limited permissions) is required for searches. This
-key is _public_ – it will be used to submit search requests directly from the browser:
-
-```bash
-curl -X POST "${TYPESENSE_BASE_URL}/keys" \
-     -H "X-TYPESENSE-API-KEY: ${TYPESENSE_API_KEY}" \
-     -d '{"description":"Public search key","actions":["documents:search"],"collections":["*"]}'
-```
-
-Note the `value` from the `JSON` response body. Stash this somewhere so it can be used when
-configuring the [tradingstrategy-ai/frontend](https://github.com/tradingstrategy-ai/frontend)
-application.
+In general, the `trading-entities` collection is not populated from a file, but by running the
+[`export-typesense.py`](https://github.com/tradingstrategy-ai/oracle/blob/master/scripts/export-typesense.py)
+script on the oracle production server. See [Troubleshooting](docs/troubleshooting.md) guide for
+details.
