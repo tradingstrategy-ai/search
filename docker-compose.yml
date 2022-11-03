@@ -3,7 +3,7 @@ services:
   # Typesense search service
   typesense:
     container_name: typesense
-    image: typesense/typesense:0.22.2
+    image: typesense/typesense:0.24.0.rcn28
     command: --data-dir /data --api-key=${TYPESENSE_API_KEY?err}
     ports:
       - "8108:8108"
