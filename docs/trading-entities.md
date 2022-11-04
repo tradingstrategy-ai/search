@@ -11,24 +11,24 @@ for filtering and sorting.
 See [Typesense field types](https://typesense.org/docs/0.22.2/api/collections.html#field-types)
 
 | Field | Type | Required | Index | Facet | Details |
-| --- | --- | :---: | :---: | :---: | --- |
-| `id` | `string` | &#x2713; | &#x2717; | &#x2717; | `exchange_1` \| `token_2345` \| `pair_45678` |
-| `type` | `string` | &#x2713; | &#x2713; | &#x2713; | `exchange` \| `token` \| `pair`<br>for faceting and possibly grouping results |
-| `type_rank` | `int32` | &#x2713; | &#x2713; | &#x2717; | `exchange=1` \| `token=2` \| `pair=3`<br>for ranking; may not need this (depends how we rank and group results)|
-| `name` | `string` | &#x2713; | &#x2713; | &#x2717; | `exchange:` "QuickSwap" \| `token:` "Aave (AAVE)" \| `pair:` "AAVE-ETH" |
-| `description` | `string` | &#x2713; | &#x2713; | &#x2717; | `exchange:` "QuickSwap on Polygon" \| `token:` "Aave (AAVE) token on Ethereum" \| `pair:` "AAVE-ETH trading pair on SushiSwap on Ethereum" |
-| `blockchain` | `string` | &#x2713; | &#x2713; | &#x2713; | e.g., "polygon", "ethereum" |
-| `exchange` | `string` | &#x2713; | &#x2713; | &#x2713; | e.g., "Uniswap v2", "Sushiswap"<br>same as `name` for exchanges; set to `exchange.name` for pairs; set to `""` (empty string) for tokens |
-| `smart_contract_addresses` | `string[]` | &#x2713; | &#x2713; | &#x2717; | array of all indexable addresses for the type |
-| `token_tickers` | `string[]` | &#x2717; | &#x2713; | &#x2717; | array of all indexable token tickers for the type |
-| `token_names` | `string[]` | &#x2717; | &#x2713; | &#x2717; | array of all indexable token names for the type |
-| `quality_factors` | `string[]` | &#x2717; | &#x2717; | &#x2717; | array of factors used to identify "low quality" entities<br>current possible values: `liquidity` |
-| `volume_24h` | `float` | &#x2717; | &#x2713; | &#x2717; | in USD; advanced search filtering / ranking |
-| `liquidity` | `float` | &#x2717; | &#x2713; | &#x2717; | in USD; advanced search filtering / ranking |
-| `price_change_24h` | `float` | &#x2717; | &#x2713; | &#x2717; | percent (expresed as decimal); secondary sort criterion for tokens & pairs |
-| `price_usd_latest` | `float` | &#x2717; | &#x2713; | &#x2717; | in USD; not valuable for filtering / ranking - used for display only |
-| `pool_swap_fee` | `float` | &#x2717; | &#x2713; | &#x2717; | percent (expressed as decimal); only applies to Uniswap V3 (or similar) pairs<br>current possible values: `0.0005` (`0.05%`), `0.003` (`0.3%`), `0.01` (1%) |
-| `url_path` | `string` | &#x2717; | &#x2717; | &#x2717; | path of entity on tradingstrategy.ai (not including URL base) |
+| ---   | ---  | :---:    | :---: | :---: | ---     |
+| `id`                       | `string`   | ✓ | ✗ | ✗ | `exchange_1` \| `token_2345` \| `pair_45678` |
+| `type`                     | `string`   | ✓ | ✓ | ✓ | `exchange` \| `token` \| `pair`<br>for faceting and possibly grouping results |
+| `type_rank`                | `int32`    | ✓ | ✓ | ✗ | `exchange=1` \| `pair=3` \| `token=2`<br>for ranking; may not need this (depends how we rank and group results)|
+| `name`                     | `string`   | ✓ | ✓ | ✗ | `exchange:` "QuickSwap" \| `token:` "Aave (AAVE)" \| `pair:` "AAVE-ETH" |
+| `description`              | `string`   | ✓ | ✓ | ✗ | `exchange:` "QuickSwap on Polygon" \| `token:` "Aave (AAVE) token on Ethereum" \| `pair:` "AAVE-ETH trading pair on SushiSwap on Ethereum" |
+| `blockchain`               | `string`   | ✓ | ✓ | ✓ | e.g., "polygon", "ethereum" |
+| `exchange`                 | `string`   | ✓ | ✓ | ✓ | e.g., "Uniswap v2", "Sushiswap"<br>same as `name` for exchanges; set to `exchange.name` for pairs; set to `""` (empty string) for tokens |
+| `smart_contract_addresses` | `string[]` | ✓ | ✓ | ✗ | array of all indexable addresses for the type |
+| `token_tickers`            | `string[]` | ✗ | ✓ | ✗ | array of all indexable token tickers for the type |
+| `token_names`              | `string[]` | ✗ | ✓ | ✗ | array of all indexable token names for the type |
+| `quality_factors`          | `string[]` | ✗ | ✗ | ✗ | array of factors used to identify "low quality" entities<br>current possible values: `liquidity` |
+| `volume_24h`               | `float`    | ✗ | ✓ | ✗ | in USD; advanced search filtering / ranking |
+| `liquidity`                | `float`    | ✗ | ✓ | ✗ | in USD; advanced search filtering / ranking |
+| `price_change_24h`         | `float`    | ✗ | ✓ | ✗ | percent (expresed as decimal); secondary sort criterion for tokens & pairs |
+| `price_usd_latest`         | `float`    | ✗ | ✓ | ✗ | in USD; not valuable for filtering / ranking - used for display only |
+| `pool_swap_fee`            | `float`    | ✗ | ✓ | ✗ | percent (expressed as decimal); only applies to Uniswap V3 (or similar) pairs<br>current possible values: `0.0005` (`0.05%`), `0.003` (`0.3%`), `0.01` (1%) |
+| `url_path`                 | `string`   | ✗ | ✗ | ✗ | path of entity on tradingstrategy.ai (not including URL base) |
 
 ## File Format
 
@@ -50,7 +50,6 @@ Collection import files should be in [JSON Lines](https://jsonlines.org) format 
   "smart_contract_addresses": ["0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32"],
   "token_tickers": [],
   "token_names": [],
-  "price_change_24h": null,
   "volume_24h": null,
   "liquidity": null,
   "url_path": "/polygon/quickswap"
@@ -63,7 +62,7 @@ Collection import files should be in [JSON Lines](https://jsonlines.org) format 
 {
   "id": "token_23456",
   "type": "token",
-  "type_rank": 2,
+  "type_rank": 4,
   "name": "Aave (AAVE)",
   "description": "Aave (AAVE) token on Ethereum",
   "blockchain": "Ethereum",
@@ -71,7 +70,6 @@ Collection import files should be in [JSON Lines](https://jsonlines.org) format 
   "smart_contract_addresses": ["0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9"],
   "token_tickers": ["AAVE"],
   "token_names": ["Aave"],
-  "price_change_24h": 0.0123,
   "volume_24h": 123456.78,
   "liquidity": 234567.89,
   "url_path": "/ethereum/aave"
@@ -93,9 +91,10 @@ Collection import files should be in [JSON Lines](https://jsonlines.org) format 
   "token_tickers": ["AAVE", "ETH"],
   "token_names": ["Aave", "Ether"],
   "quality_factors": ["liquidity"],
-  "price_change_24h": -0.0345,
   "volume_24h": 123456.78,
   "liquidity": 234567.89,
+  "price_change_24h": -0.0345,
+  "price_usd_latest": 93.5,
   "pool_swap_fee": null,
   "url_path": "/ethereum/sushiswap/aave-eth"
 }
