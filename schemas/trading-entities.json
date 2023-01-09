@@ -7,6 +7,7 @@
     { "name": "description", "type": "string" },
     { "name": "blockchain", "type": "string", "facet": true },
     { "name": "exchange", "type": "string", "facet": true },
+    { "name": "exchange_type", "type": "string", "optional": true, "index": false },
     { "name": "smart_contract_addresses", "type": "string[]" },
     { "name": "token_tickers", "type": "string[]", "optional": true },
     { "name": "token_names", "type": "string[]", "optional": true },
