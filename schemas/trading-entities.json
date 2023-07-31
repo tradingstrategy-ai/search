@@ -15,6 +15,7 @@
     { "name": "quality_factors", "type": "string[]","optional": true, "index": false },
     { "name": "volume_24h", "type": "float", "optional": true },
     { "name": "liquidity", "type": "float", "optional": true },
+    { "name": "tvl", "type": "float", "optional": true },
     { "name": "price_change_24h", "type": "float", "optional": true },
     { "name": "price_usd_latest", "type": "float", "optional": true },
     { "name": "pool_swap_fee", "type": "float", "optional": true },

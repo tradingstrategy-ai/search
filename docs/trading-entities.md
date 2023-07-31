@@ -27,6 +27,7 @@ See [Typesense field types](https://typesense.org/docs/0.22.2/api/collections.ht
 | `quality_factors`          | `string[]` | ✗ | ✗ | ✗ | array of factors used to identify "low quality" entities<br>current possible values: `liquidity` |
 | `volume_24h`               | `float`    | ✗ | ✓ | ✗ | in USD; advanced search filtering / ranking |
 | `liquidity`                | `float`    | ✗ | ✓ | ✗ | in USD; advanced search filtering / ranking |
+| `tvl`                      | `float`    | ✗ | ✓ | ✗ | in USD; advanced search filtering / ranking |
 | `price_change_24h`         | `float`    | ✗ | ✓ | ✗ | percent (expresed as decimal); secondary sort criterion for tokens & pairs |
 | `price_usd_latest`         | `float`    | ✗ | ✓ | ✗ | in USD; not valuable for filtering / ranking - used for display only |
 | `pool_swap_fee`            | `float`    | ✗ | ✓ | ✗ | **Deprecated:** Use `pair_swap_fee` instead.<br>_percent (expressed as decimal); only applies to Uniswap V3 (or similar) pairs<br>current possible values: `0.0005` (`0.05%`), `0.003` (`0.3%`), `0.01` (1%)_ |
