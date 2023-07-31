@@ -6,7 +6,7 @@
     { "name": "name", "type": "string" },
     { "name": "description", "type": "string" },
     { "name": "blockchain", "type": "string", "facet": true },
-    { "name": "exchange", "type": "string", "facet": true },
+    { "name": "exchange", "type": "string", "optional": true, "facet": true },
     { "name": "exchange_type", "type": "string", "optional": true, "index": false },
     { "name": "lending_protocol", "type": "string", "optional": true, "facet": true },
     { "name": "smart_contract_addresses", "type": "string[]" },

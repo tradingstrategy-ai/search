@@ -18,8 +18,8 @@ See [Typesense field types](https://typesense.org/docs/0.22.2/api/collections.ht
 | `name`                     | `string`   | ✓ | ✓ | ✗ | `exchange:` "QuickSwap"<br>`token:` "Aave (AAVE)"<br>`pair:` "AAVE-ETH"<br>`reserve:` "Dai Stablecoin" |
 | `description`              | `string`   | ✓ | ✓ | ✗ | `exchange:` "QuickSwap on Polygon"<br>`token:` "Aave (AAVE) token on Ethereum"<br>`pair:` "AAVE-ETH trading pair on SushiSwap on Ethereum"<br>`reserve:` "Dai Stablecoin on Aave V3" |
 | `blockchain`               | `string`   | ✓ | ✓ | ✓ | e.g., "polygon", "ethereum" |
-| `exchange`                 | `string`   | ✓ | ✓ | ✓ | e.g., "Uniswap v2", "Sushiswap"<br>same as `name` for exchanges; set to `exchange.name` for pairs; set to `""` (empty string) for tokens |
-| `exchange_type`            | `string`   | ✗ | ✗ | ✗ | e.g., "uniswap_v2", "uniswap_v2_incompatible"<br>set on exchanges and pairs; not set for tokens |
+| `exchange`                 | `string`   | ✗ | ✓ | ✓ | e.g., "Uniswap v2", "Sushiswap"<br>same as `name` for exchanges; set to `exchange.name` for pairs; leave blank for tokens and reserves |
+| `exchange_type`            | `string`   | ✗ | ✗ | ✗ | e.g., "uniswap_v2", "uniswap_v2_incompatible"<br>set on exchanges and pairs; not set for tokens or reserves |
 | `lending_protocol`         | `string`   | ✗ | ✓ | ✓ | e.g., "Aave V3"<br>set to `reserve.protocol_name` for lending reserves; leave blank for other entities |
 | `smart_contract_addresses` | `string[]` | ✓ | ✓ | ✗ | array of all indexable addresses for the type |
 | `token_tickers`            | `string[]` | ✗ | ✓ | ✗ | array of all indexable token tickers for the type |
