@@ -12,14 +12,15 @@ See [Typesense field types](https://typesense.org/docs/0.22.2/api/collections.ht
 
 | Field | Type | Required | Index | Facet | Details |
 | ---   | ---  | :---:    | :---: | :---: | ---     |
-| `id`                       | `string`   | ✓ | ✗ | ✗ | `exchange_1` \| `token_2345` \| `pair_45678` |
-| `type`                     | `string`   | ✓ | ✓ | ✓ | `exchange` \| `token` \| `pair`<br>for faceting and possibly grouping results |
-| `type_rank`                | `int32`    | ✓ | ✓ | ✗ | `exchange=1` \| `pair=3` \| `token=2`<br>for ranking; may not need this (depends how we rank and group results)|
-| `name`                     | `string`   | ✓ | ✓ | ✗ | `exchange:` "QuickSwap" \| `token:` "Aave (AAVE)" \| `pair:` "AAVE-ETH" |
-| `description`              | `string`   | ✓ | ✓ | ✗ | `exchange:` "QuickSwap on Polygon" \| `token:` "Aave (AAVE) token on Ethereum" \| `pair:` "AAVE-ETH trading pair on SushiSwap on Ethereum" |
+| `id`                       | `string`   | ✓ | ✗ | ✗ | `exchange_1` \| `token_2345` \| `pair_45678` \| `reserve_567` |
+| `type`                     | `string`   | ✓ | ✓ | ✓ | `exchange` \| `token` \| `pair` \| `reserve`<br>for faceting and possibly grouping results |
+| `type_rank`                | `int32`    | ✓ | ✓ | ✗ | `exchange=1` \| `pair=2` \| `token=3` \| `reserve=4`<br>for ranking in quick search |
+| `name`                     | `string`   | ✓ | ✓ | ✗ | `exchange:` "QuickSwap"<br>`token:` "Aave (AAVE)"<br>`pair:` "AAVE-ETH"<br>`reserve:` "Dai Stablecoin" |
+| `description`              | `string`   | ✓ | ✓ | ✗ | `exchange:` "QuickSwap on Polygon"<br>`token:` "Aave (AAVE) token on Ethereum"<br>`pair:` "AAVE-ETH trading pair on SushiSwap on Ethereum"<br>`reserve:` "Dai Stablecoin on Aave V3" |
 | `blockchain`               | `string`   | ✓ | ✓ | ✓ | e.g., "polygon", "ethereum" |
 | `exchange`                 | `string`   | ✓ | ✓ | ✓ | e.g., "Uniswap v2", "Sushiswap"<br>same as `name` for exchanges; set to `exchange.name` for pairs; set to `""` (empty string) for tokens |
 | `exchange_type`            | `string`   | ✗ | ✗ | ✗ | e.g., "uniswap_v2", "uniswap_v2_incompatible"<br>set on exchanges and pairs; not set for tokens |
+| `lending_protocol`         | `string`   | ✗ | ✓ | ✓ | e.g., "Aave V3"<br>set to `reserve.protocol_name` for lending reserves; leave blank for other entities |
 | `smart_contract_addresses` | `string[]` | ✓ | ✓ | ✗ | array of all indexable addresses for the type |
 | `token_tickers`            | `string[]` | ✗ | ✓ | ✗ | array of all indexable token tickers for the type |
 | `token_names`              | `string[]` | ✗ | ✓ | ✗ | array of all indexable token names for the type |
@@ -29,6 +30,9 @@ See [Typesense field types](https://typesense.org/docs/0.22.2/api/collections.ht
 | `price_change_24h`         | `float`    | ✗ | ✓ | ✗ | percent (expresed as decimal); secondary sort criterion for tokens & pairs |
 | `price_usd_latest`         | `float`    | ✗ | ✓ | ✗ | in USD; not valuable for filtering / ranking - used for display only |
 | `pool_swap_fee`            | `float`    | ✗ | ✓ | ✗ | percent (expressed as decimal); only applies to Uniswap V3 (or similar) pairs<br>current possible values: `0.0005` (`0.05%`), `0.003` (`0.3%`), `0.01` (1%) |
+| `supply_apr`               | `float`    | ✗ | ✓ | ✗ | percent (expressed as percentage); only applies to lending reserves |
+| `stable_borrow_apr`        | `float`    | ✗ | ✓ | ✗ | percent (expressed as percentage); only applies to lending reserves |
+| `variable_borrow_apr`      | `float`    | ✗ | ✓ | ✗ | percent (expressed as percentage); only applies to lending reserves |
 | `url_path`                 | `string`   | ✗ | ✗ | ✗ | path of entity on tradingstrategy.ai (not including URL base) |
 
 ## File Format
