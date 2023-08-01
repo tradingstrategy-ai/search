@@ -82,12 +82,48 @@ curl "${TYPESENSE_BASE_URL}/collections/trading-entities" \
 
 ### Repopulate collection
 
-The collection is populated by running the following ETL script on the `oracle` server:
+The collection is populated by running an ETL script on the `oracle` server. SSH to production and
+configure your environment (check prod history for the latest `ORACLE_VERSION`):
 
 ```bash
+ssh $PROD
+cd ~/oracle/oracle
 source ~/secrets.env
-bash scripts/export-typesense.py
+export ORACLE_VERSION=v258
 ```
+
+You should now be able to run the Typesense ETL script via `docker-compose`:
+
+```bash
+docker-compose run -it --entrypoint /usr/local/bin/python oracle-console /usr/src/oracle/scripts/generic/export-typesense.py
+```
+
+This script will take several minutes to complete. Successful output should look something like
+the following:
+
+```log
+2023-08-01 20:29:57 Started task export_typesense
+2023-08-01 20:29:57 Starting JSONL export
+2023-08-01 20:29:57 Exporting exchanges
+2023-08-01 20:29:58 Exported 117 total exchanges, named -4415, unknown 4532, name data for 109
+2023-08-01 20:29:58 Started task export_tokens
+2023-08-01 20:29:58 Exporting tokens
+2023-08-01 20:30:44 159263 token entries
+2023-08-01 20:30:44 Ended task export_tokens, took 0:00:46.510067
+2023-08-01 20:30:44 Started task export_trading_pairs
+2023-08-01 20:30:44 Fetching pair eligibility data
+2023-08-01 20:30:47 Fetching pairs
+2023-08-01 20:31:02 Fetching exchanges
+2023-08-01 20:31:03 Fetching stats
+2023-08-01 20:32:03 We have 184487 pairs, 186367 stats entries
+2023-08-01 20:33:37 184487 trading pair entries, 11167 price changes
+2023-08-01 20:33:38 Ended task export_trading_pairs, took 0:02:54.023184
+2023-08-01 20:33:38 Wrote Typesense export /root/oracle-datasets/typesense.jsonl, 343867 entries in 220.844973 seconds, size is 250,666,862 bytes
+2023-08-01 20:33:38 Ended task export_typesense, took 0:03:40.853901
+2023-08-01 20:33:38 Uploading data to Typesense
+2023-08-01 20:34:42 Typesense upload complete in 63.892714 seconds
+```
+
 
 Once the ETL process is complete, you can re-check the collection to ensure it has the expected
 number of documents (see above).
