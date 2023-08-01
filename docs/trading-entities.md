@@ -12,7 +12,8 @@ See [Typesense field types](https://typesense.org/docs/0.22.2/api/collections.ht
 
 | Field | Type | Required | Index | Facet | Details |
 | ---   | ---  | :---:    | :---: | :---: | ---     |
-| `id`                       | `string`   | ✓ | ✗ | ✗ | `exchange_1` \| `token_2345` \| `pair_45678` \| `reserve_567` |
+| `id`                       | `string`   | ✓ | ✗ | ✗ | `exchange_1` \| `token_2345` \| `pair_45678` \| `reserve_567`<br>Typesense unique document identifier |
+| `internal_id`              | `string`   | ✗ | ✓ | ✗ | e.g., "12345"<br>Trading Strategy's internal (database) ID for any entity type |
 | `type`                     | `string`   | ✓ | ✓ | ✓ | `exchange` \| `token` \| `pair` \| `reserve`<br>for faceting and possibly grouping results |
 | `type_rank`                | `int32`    | ✓ | ✓ | ✗ | `exchange=1` \| `pair=2` \| `token=3` \| `reserve=4`<br>for ranking in quick search |
 | `name`                     | `string`   | ✓ | ✓ | ✗ | `exchange:` "QuickSwap"<br>`token:` "Aave (AAVE)"<br>`pair:` "AAVE-ETH"<br>`reserve:` "Dai Stablecoin" |

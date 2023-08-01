@@ -1,6 +1,7 @@
 {
   "name": "trading-entities",
   "fields": [
+    { "name": "internal_id", "type": "string", "optional": true },
     { "name": "type", "type": "string", "facet": true },
     { "name": "type_rank", "type": "int32" },
     { "name": "name", "type": "string" },
