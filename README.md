@@ -15,7 +15,8 @@ self-hosted.
 Set the `TYPESENSE_API_KEY` key. This is the master API key with full privileges – keep it secure!
 
 ```bash
-export TYPESENSE_API_KEY=super_secret_ts_key  # replace with a secure key
+vim typesense.env
+TYPESENSE_API_KEY=super_secret_ts_key  # replace with a secure key
 ```
 
 ### Typesense Data Files
@@ -24,7 +25,7 @@ By default, Typesense data will be stored in `./typesense-data`. You can overrid
 setting the `TYPESENSE_DATA` environment variable, e.g.:
 
 ```bash
-export TYPESENSE_DATA=/var/lib/typesense/data
+TYPESENSE_DATA=/var/lib/typesense/data
 ```
 
 ### Start Typesense Service

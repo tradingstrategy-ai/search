@@ -1,11 +1,13 @@
-version: '3'
+version: '3.4'
 services:
   # Typesense search service
   typesense:
-    container_name: typesense
-    image: typesense/typesense:0.24.1
-    command: --data-dir /data --api-key=${TYPESENSE_API_KEY?err}
+    image: typesense/typesense:0.25.1
+    restart: on-failure
     ports:
-      - "8108:8108"
+      - "127.0.0.1:8108:8108"
     volumes:
       - ${TYPESENSE_DATA:-./typesense-data}:/data
+    env_file:
+      - $PWD/typesense.env
+    command: sh start_typesense.sh
