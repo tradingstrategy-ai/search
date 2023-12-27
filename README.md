@@ -14,8 +14,12 @@ self-hosted.
 
 Set the `TYPESENSE_API_KEY` key. This is the master API key with full privileges – keep it secure!
 
+Open `typesense.env` 
 ```bash
 vim typesense.env
+```
+Update master API key to `env` 
+```bash
 TYPESENSE_API_KEY=super_secret_ts_key  # replace with a secure key
 ```
 
@@ -29,6 +33,8 @@ TYPESENSE_DATA=/var/lib/typesense/data
 ```
 
 ### Start Typesense Service
+
+We added  `docker-compose.yml` in source code. You can start docker container by:
 
 ```bash
 docker-compose up -d
