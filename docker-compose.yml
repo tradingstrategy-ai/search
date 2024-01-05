@@ -3,11 +3,20 @@ services:
   # Typesense search service
   typesense:
     image: typesense/typesense:0.25.1
+
     restart: on-failure
+
     ports:
       - "127.0.0.1:8108:8108"
+
     volumes:
-      - ${TYPESENSE_DATA:-./typesense-data}:/data
-    env_file:
-      - $PWD/typesense.env
-    command: sh start_typesense.sh
+      # Set TYPESENSE_HOST_DATA_DIR to the path of the data directory on local
+      # host machine. Defaults to ./typesense-data in search application directory
+      - ${TYPESENSE_HOST_DATA_DIR:-./typesense-data}:/data
+
+    # The `command` option should only include Typesence CLI options, which are
+    # appended to default Typesense image ENTRYPOINT: `/opt/typesense-server`
+    #
+    # TYPESENSE_SERVER_API_KEY is required (server will fail without it) in order
+    # to set the master admin API key used when calling Typesense APIs.
+    command: '--data-dir /data --api-key=${TYPESENSE_SERVER_API_KEY} --enable-cors'
