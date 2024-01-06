@@ -8,36 +8,58 @@ and blog posts. Typesense can be [self-hosted](https://typesense.org/docs/) or r
 This repo provides Docker configuration, utility scripts and documentation on how to run Typesense
 self-hosted.
 
-## Running
+## Configuration
+
+A template/example file is provided to simplify configuration. Copy this to `.env` and open it with
+your favorite editor.
+
+```bash
+cp typesense.env.default .env
+vim .env
+```
+
+> [!NOTE]
+> The `.env` file may be renamed to something else (e.g., `typesense.env`). In this case,
+> `docker-compose` must be started with the `--env-file` flag (see **Running** below). It does
+> ***not*** work to use the `env_file:` option in the `docker-compose.yml` file. Sourcing the file
+> this way only makes the env variables available within the container, *not* within the
+> `docker-compose.yml` file itself (which is a requirement).
 
 ### Master API Key
 
-Set the `TYPESENSE_API_KEY` key. This is the master API key with full privileges – keep it secure!
+Set the `TYPESENSE_SERVER_API_KEY` variable. This acts as the master API key with full privileges –
+keep it secure!
 
-Open `typesense.env` 
-```bash
-vim typesense.env
-```
-Update master API key to `env` 
 ```bash
 TYPESENSE_API_KEY=super_secret_ts_key  # replace with a secure key
 ```
 
-### Typesense Data Files
+### Typesense Data Directory
 
 By default, Typesense data will be stored in `./typesense-data`. You can override this by
-setting the `TYPESENSE_DATA` environment variable, e.g.:
+setting the `TYPESENSE_HOST_DATA_DIR` environment variable, e.g.:
 
 ```bash
-TYPESENSE_DATA=/var/lib/typesense/data
+TYPESENSE_HOST_DATA_DIR=/var/lib/typesense/data
 ```
+
+## Running
 
 ### Start Typesense Service
 
-We added  `docker-compose.yml` in source code. You can start docker container by:
+If the configuration options above are specified in `.env` in the same directory as this repo,
+*or* if they have been sourced into the shell's contect (e.g. using `source ~/secrets.env`), the
+service can be started with the standard `docker-compose` command:
 
 ```bash
 docker-compose up -d
+```
+
+If the config options are specified in a different location (e.g., `typesense.env`), add the
+`--env-file` option:
+
+```bash
+docker-compose --env-file typesense.env up -d
 ```
 
 ### Stop Typesense Service
