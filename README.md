@@ -45,7 +45,7 @@ TYPESENSE_HOST_DATA_DIR=/var/lib/typesense/data
 If you want to update path of Typesense data in the container, you can overide this by setting
 the `TYPESENSE_DATA_DIR` environment variable (defaults to `/data`):
 ```bash
-TYPESENSE_DATA_DIR=/var/
+TYPESENSE_DATA_DIR=/typesense-data
 ```
 
 ## Running
