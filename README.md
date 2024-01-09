@@ -14,7 +14,7 @@ A template/example file is provided to simplify configuration. Copy this to `.en
 your favorite editor.
 
 ```bash
-cp typesense.env.default .env
+cp env.default .env
 vim .env
 ```
 
@@ -31,21 +31,21 @@ Set the `TYPESENSE_SERVER_API_KEY` variable. This acts as the master API key wit
 keep it secure!
 
 ```bash
-TYPESENSE_API_KEY=super_secret_ts_key  # replace with a secure key
+TYPESENSE_SERVER_API_KEY=super_secret_ts_key  # replace with a secure key
 ```
 
 ### Typesense Data Directory
 
-By default, Typesense data will be stored in `./typesense-data`. You can override this by
-setting the `TYPESENSE_HOST_DATA_DIR` environment variable, e.g.:
-
+By default, Typesense data will be stored in `./typesense-data` on the host machine. You can
+override this by setting the `TYPESENSE_HOST_DATA_DIR` environment variable, e.g.:
 ```bash
 TYPESENSE_HOST_DATA_DIR=/var/lib/typesense/data
 ```
 
-If you want to update path of typesense data in container. You can overide this by setting setting the `TYPESENSE_DATA_DIR` environment variable. I set default:
+If you want to update path of Typesense data in the container, you can overide this by setting
+the `TYPESENSE_DATA_DIR` environment variable (defaults to `/data`):
 ```bash
-TYPESENSE_DATA_DIR=/data
+TYPESENSE_DATA_DIR=/var/
 ```
 
 ## Running
