@@ -19,7 +19,6 @@
     { "name": "tvl", "type": "float", "optional": true },
     { "name": "price_change_24h", "type": "float", "optional": true },
     { "name": "price_usd_latest", "type": "float", "optional": true },
-    { "name": "pool_swap_fee", "type": "float", "optional": true },
     { "name": "pair_swap_fee", "type": "float", "optional": true, "facet": true },
     { "name": "supply_apr", "type": "float", "optional": true },
     { "name": "stable_borrow_apr", "type": "float", "optional": true },
